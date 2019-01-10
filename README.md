@@ -54,7 +54,7 @@ Afin que l'utilisateur soit bien redirigé vers la bonne page, il faut créer un
         },
         {
             path: '**',
-            redirectTo: 'home'
+            component: NotFoundComponent
         }
     ];
 
@@ -63,20 +63,17 @@ Plusieurs chose à comprendre
 
 - forRoot: 
 
-
 - routes: Routes: 
 
+- pathMatch: la stratégie de prise en compte de l'url
 
-- pathMatch: 
+- redirectTo: 'home' : redirige automatiquement vers home
 
+- component: le component à charger
 
-- redirectTo: 'home'
+- path: 'home': l'url demandée par l'utilisateur
 
-- component: 
-
-- path: 'home': 
-
-- path: '**': 
+- path: '**': quelque soit l'url qui n'a pas été encore définit C'est une sorte de 404
 
 
 #### app.modules.ts
