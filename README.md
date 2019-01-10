@@ -10,6 +10,95 @@ Le guide pour comprendre le router de angular
 
 ----
 
+### 01 - Adding routing to the Angular project
+
+Tout d'abord il faut ajouter le module de routing de angular dans votre application si ce n'est pas encore fait
+
+    $ npm i @angular/router --save
+
+Ensuite mettre à jour le module principal ainsi que le fichier de routing.
+Il faut noter que lorsque j'ai génré le projet avec le CLI j'ai aussi ajouté le systeme de routing qui m'ajouté automatiquement le fichier app-routing.modules.ts qui gère le routing principal de l'application
+
+Les fichiers à mettre à jour
+
+#### Faire fonctionner le routing d'angular
+
+Dans **app-routing.module.ts**, il faut importer le RouterModule depuis angular
+
+    import { Routes, RouterModule } from '@angular/router';
+
+puis ajouter le routerModule dans la liste des imports pour qu'il puisse être utilisé
+
+    @NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+    })
+    export class AppRoutingModule { }
+
+Afin que l'utilisateur soit bien redirigé vers la bonne page, il faut créer un array de routes. On peut le faire grace à la constante routes qui sera injecté dans le RouterModule
+
+
+    const routes: Routes = [
+        {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'home'
+        },
+        {
+            path: 'home',
+            component: HomeComponent
+        },
+        {
+            path: 'blog',
+            component: BlogComponent
+        },
+        {
+            path: '**',
+            redirectTo: 'home'
+        }
+    ];
+
+
+Plusieurs chose à comprendre
+
+- forRoot: 
+
+
+- routes: Routes: 
+
+
+- pathMatch: 
+
+
+- redirectTo: 'home'
+
+- component: 
+
+- path: 'home': 
+
+- path: '**': 
+
+
+#### app.modules.ts
+    
+Afin de pouvoir utiliser le routing il faut maintenant l'ajouter dans notre module principal, dans la liste des imports de modules donc.
+
+    import { AppRoutingModule } from './app-routing.module';
+
+    imports: [
+        BrowserModule,
+        AppRoutingModule
+    ],
+
+ 
+#### app.component.html
+
+    <router-outlet></router-outlet>
+
+
+----
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
 
 ## Development server
