@@ -1,7 +1,7 @@
 export const environment = {
     production: true,
-    apiReqres: 'https://reqres.in/api/',
-    api: 'https://jsonplaceholder.typicode.com/'
+    apiReqres: 'https://reqres.in/api',
+    api: 'https://jsonplaceholder.typicode.com'
 };
 
 /**

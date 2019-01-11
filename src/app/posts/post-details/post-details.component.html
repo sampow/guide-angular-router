@@ -1,8 +1,18 @@
-<p>
-  post-details works!
-  <br>
+<div class="container">
+    post-details works!
+    <br>
 
-  And we get {{ pageDetails }}
+    <span *ngIf="pageDetailsParameters">
+        Route parameters: {{ pageDetailsParameters }}
+    </span>
 
+    <pre *ngIf="post">
+        {{ post | json }}
+    </pre>
 
-</p>
+    <br>
+    <span *ngIf="pageDetailsQueryParameters">
+        Query parameters: {{ pageDetailsQueryParameters }}
+    </span>
+
+</div>

@@ -4,6 +4,31 @@
         Welcome to {{ title }}!
     </h1>
 
+    <div>
+
+        <ul>
+            <li>
+                <a [routerLink]="['/home']"
+                    routerLinkActive="active">Home</a>
+            </li>
+            <li>
+                <a [routerLink]="['/blog']"
+                    routerLinkActive="active">Blog</a>
+            </li>
+            <li class="dropdown">
+                <a [routerLink]="['/posts']"
+                    routerLinkActive="active"
+                    class="dropbtn">Posts</a>
+                <div class="dropdown-content">
+                    <a [routerLink]="['/posts']">Post details</a>
+                    <a [routerLink]="['/posts', '34']">Post details (Route parameters)</a>
+                    <a [routerLink]="['/posts' , '3']" [queryParams]="{display : true}">Post details (Query parameters) </a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
     <!--
         without angular router we could use ng if to display or hide component
         <app-home></app-home>
