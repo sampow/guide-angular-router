@@ -1,38 +1,62 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-    <h1>
-        Welcome to {{ title }}!
-    </h1>
-
-    <div>
-
-        <ul>
-            <li>
+<div class="row">
+    <div class="col s3">
+        <ul class="sidenav sidenav-fixed"
+            [ngClass]="{showMenuPlease: showMenu}">
+            <li class="logo">
+                <i class=" large material-icons">device_hub</i>
+            </li>
+            <li class="bold"
+                routerLinkActive="active">
                 <a [routerLink]="['/home']"
                     routerLinkActive="active">Home</a>
             </li>
-            <li>
+            <li class="bold"
+                routerLinkActive="active">
                 <a [routerLink]="['/blog']"
                     routerLinkActive="active">Blog</a>
             </li>
-            <li class="dropdown">
-                <a [routerLink]="['/posts']"
-                    routerLinkActive="active"
-                    class="dropbtn">Posts</a>
-                <div class="dropdown-content">
-                    <a [routerLink]="['/posts']">Post details</a>
-                    <a [routerLink]="['/posts', '34']">Post details (Route parameters)</a>
-                    <a [routerLink]="['/posts' , '3']" [queryParams]="{display : true}">Post details (Query parameters) </a>
-                </div>
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold"
+                        routerLinkActive="active">
+                        <a [routerLink]="['/posts']"
+                            routerLinkActive="active"
+                            class="collapsible-header">Posts</a>
+
+                        <div class="collapsible-body"
+                            style="display: block;">
+                            <ul>
+                                <li routerLinkActive="active">
+                                    <a [routerLink]="['/posts', '34']">Post details (Route parameters)</a>
+                                </li>
+                                <li routerLinkActive="active">
+                                    <a [routerLink]="['/posts' , '3']"
+                                        [queryParams]="{display : true}">Post details (Query parameters) </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
             </li>
         </ul>
-
     </div>
 
-    <!--
+    <div class="col s9">
+
+        <a (click)="showMenu = !showMenu"
+            class="top-nav sidenav-trigger waves-effect waves-light circle hide-on-large-only"><i class="medium material-icons">menu</i></a>
+
+
+        <h1 class="center">
+            Welcome to {{ title }}!
+        </h1>
+
+        <!--
         without angular router we could use ng if to display or hide component
         <app-home></app-home>
         <app-blog></app-blog>
     -->
 
-    <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
+    </div>
+</div>
