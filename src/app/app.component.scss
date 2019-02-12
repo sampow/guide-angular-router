@@ -1,17 +1,17 @@
 .sidenav {
+    z-index: 2;
     background-color: #ededed;
-
+    transition: 0.25s ease-out;
     &.showMenuPlease {
         transform: translateX(0%);
-    }
 
+    }
     li {
         &.logo {
             text-align: center;
             padding-top: 32px;
             padding-bottom: 56px;
             background-color: #039be5;
-        
             i {
                 color: #fff !important;
                 float: none;
@@ -19,7 +19,7 @@
         }
         &.active {
             background-color: #0372aa;
-            & > a {
+            &>a {
                 color: #fff;
             }
         }
@@ -30,11 +30,34 @@
     .collapsible-body li a {
         padding-left: 64px;
     }
-    
+}
+.sidenav-bg {
+    z-index: 1;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(#000000,  0.8)
 }
 
 .top-nav {
     position: fixed;
     top: 10px;
     right: 10px;
+}
+
+main {
+    position: relative;
+    z-index: -1;
+    padding-left: 0;
+    &.menuShowed {
+        padding-left: 300px;
+    }
+}
+@media only screen and (min-width: 993px) {
+    .container {
+        padding-left: 300px;
+    }
 }

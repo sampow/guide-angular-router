@@ -25,7 +25,9 @@ export class PostDetailsComponent implements OnInit {
          * How to get routes parameters
          *
 
-        this.activatedRoute.params.subscribe(
+        this.activatedRoute
+        .params
+        .subscribe(
             data => {
                 console.log('pageDetailsParameters ', data);
                 this.pageDetailsParameters = data.postId;
@@ -40,9 +42,10 @@ export class PostDetailsComponent implements OnInit {
             }
         );
         */
+        
 
         // but we can write it a better way with rxjs
-
+/*
         this.activatedRoute
         .params
         .pipe(
@@ -54,9 +57,10 @@ export class PostDetailsComponent implements OnInit {
                 this.post = post;
             }
         );
+        */
 
         // is the almost the same things that
-        // this.pageDetailsParameters = this.activatedRoute.snapshot.params['postId'];
+        this.pageDetailsParameters = this.activatedRoute.snapshot.params['postId'];
 
         /**
          * How to get query parameters

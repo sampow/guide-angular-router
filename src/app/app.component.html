@@ -1,50 +1,50 @@
-<div class="row">
-    <div class="col s3">
-        <ul class="sidenav sidenav-fixed"
-            [ngClass]="{showMenuPlease: showMenu}">
-            <li class="logo">
-                <i class=" large material-icons">device_hub</i>
-            </li>
+<ul class="sidenav sidenav-fixed"
+    [ngClass]="{showMenuPlease: showMenu}">
+    <li class="logo">
+        <i class=" large material-icons">device_hub</i>
+    </li>
+    <li class="bold"
+        routerLinkActive="active">
+        <a [routerLink]="['/home']"
+            routerLinkActive="active">Home</a>
+    </li>
+    <li class="bold"
+        routerLinkActive="active">
+        <a [routerLink]="['/blog']"
+            routerLinkActive="active">Blog</a>
+    </li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
             <li class="bold"
                 routerLinkActive="active">
-                <a [routerLink]="['/home']"
-                    routerLinkActive="active">Home</a>
-            </li>
-            <li class="bold"
-                routerLinkActive="active">
-                <a [routerLink]="['/blog']"
-                    routerLinkActive="active">Blog</a>
-            </li>
-            <li class="no-padding">
-                <ul class="collapsible collapsible-accordion">
-                    <li class="bold"
-                        routerLinkActive="active">
-                        <a [routerLink]="['/posts']"
-                            routerLinkActive="active"
-                            class="collapsible-header">Posts</a>
+                <a [routerLink]="['/posts']"
+                    routerLinkActive="active"
+                    class="collapsible-header">Posts</a>
 
-                        <div class="collapsible-body"
-                            style="display: block;">
-                            <ul>
-                                <li routerLinkActive="active">
-                                    <a [routerLink]="['/posts', '34']">Post details (Route parameters)</a>
-                                </li>
-                                <li routerLinkActive="active">
-                                    <a [routerLink]="['/posts' , '3']"
-                                        [queryParams]="{display : true}">Post details (Query parameters) </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+                <div class="collapsible-body"
+                    style="display: block;">
+                    <ul>
+                        <li routerLinkActive="active">
+                            <a [routerLink]="['/posts', '34']">Post details (Route parameters)</a>
+                        </li>
+                        <li routerLinkActive="active">
+                            <a [routerLink]="['/posts' , '3']"
+                                [queryParams]="{display : true}">Post details (Query parameters) </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
         </ul>
-    </div>
+    </li>
+</ul>
+<div class="sidenav-bg"  (click)="showMenu = !showMenu" *ngIf="showMenu"></div>
 
-    <div class="col s9">
+<main class="row" [ngClass]="{menuShowed: showMenu}">
+    <div class="container">
 
         <a (click)="showMenu = !showMenu"
-            class="top-nav sidenav-trigger waves-effect waves-light circle hide-on-large-only"><i class="medium material-icons">menu</i></a>
+            class="top-nav sidenav-trigger waves-effect waves-light circle hide-on-large-only"><i
+                class="medium material-icons">menu</i></a>
 
 
         <h1 class="center">
@@ -52,11 +52,11 @@
         </h1>
 
         <!--
-        without angular router we could use ng if to display or hide component
-        <app-home></app-home>
-        <app-blog></app-blog>
-    -->
+        without angular router we could use ng if to display or hide component, not really efficient
+        <app-home *ngIf="showPage(home)"></app-home>
+        <app-blog *ngIf="showPage(blog)"></app-blog>
+        -->
 
         <router-outlet></router-outlet>
     </div>
-</div>
+</main>
