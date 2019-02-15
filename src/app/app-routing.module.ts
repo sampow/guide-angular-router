@@ -6,17 +6,21 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
     {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'home'
-    },
-    {
         path: 'home',
         component: HomeComponent
     },
     {
         path: 'blog',
         component: BlogComponent
+    },
+    { // LAZY LOADING
+        path: 'post',
+        loadChildren: './posts/posts.module#PostsModule'
+    },
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home'
     },
     {
         path: '**',

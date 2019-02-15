@@ -5,12 +5,12 @@
     </li>
     <li class="bold"
         routerLinkActive="active">
-        <a [routerLink]="['/home']"
+        <a (click)="showMenu = !showMenu" [routerLink]="['/home']"
             routerLinkActive="active">Home</a>
     </li>
     <li class="bold"
         routerLinkActive="active">
-        <a [routerLink]="['/blog']"
+        <a (click)="showMenu = !showMenu" [routerLink]="['/blog']"
             routerLinkActive="active">Blog</a>
     </li>
     <li class="no-padding">
@@ -19,16 +19,19 @@
                 routerLinkActive="active">
                 <a [routerLink]="['/posts']"
                     routerLinkActive="active"
+                    (click)="showMenu = !showMenu"
                     class="collapsible-header">Posts</a>
 
                 <div class="collapsible-body"
                     style="display: block;">
                     <ul>
                         <li routerLinkActive="active">
-                            <a [routerLink]="['/posts', '34']">Post details (Route parameters)</a>
+                            <a (click)="showMenu = !showMenu"
+                                [routerLink]="['/posts', '34']">Post details (Route parameters)</a>
                         </li>
-                        <li routerLinkActive="active">
-                            <a [routerLink]="['/posts' , '3']"
+                        <li 
+                            routerLinkActive="active">
+                            <a (click)="showMenu = !showMenu" [routerLink]="['/posts' , '3']"
                                 [queryParams]="{display : true}">Post details (Query parameters) </a>
                         </li>
                     </ul>
@@ -37,13 +40,16 @@
         </ul>
     </li>
 </ul>
-<div class="sidenav-bg"  (click)="showMenu = !showMenu" *ngIf="showMenu"></div>
+<div class="sidenav-bg"
+    (click)="showMenu = !showMenu"
+    *ngIf="showMenu"></div>
 
-<main class="row" [ngClass]="{menuShowed: showMenu}">
+<main class="row"
+    [ngClass]="{menuShowed: showMenu}">
     <div class="container">
 
         <a (click)="showMenu = !showMenu"
-            class="top-nav sidenav-trigger waves-effect waves-light circle hide-on-large-only"><i
+            class="top-nav sidenav-trigger hide-on-large-only"><i
                 class="medium material-icons">menu</i></a>
 
 
