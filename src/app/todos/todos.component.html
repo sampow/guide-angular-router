@@ -1,0 +1,51 @@
+<h1>La liste !</h1>
+
+<div class="row">
+    <div class="col s12 m6">
+
+        <h4>Todos</h4>
+        <div class="collection"
+            *ngIf="todos">
+            <a *ngFor="let todo of todos"
+                [routerLink]="['/todo-detail', todo.id]"
+                class="collection-item">
+                <span class="badge"
+                    [ngSwitch]="todo.completed">
+                    <ng-container *ngSwitchCase="true">
+                        😁
+                    </ng-container>
+                    <ng-container *ngSwitchCase="false">
+                        😡
+                    </ng-container>
+
+                </span>
+                {{todo.title}}
+            </a>
+        </div>
+    </div>
+
+    <div class="col s12 m6">
+
+            <h4>Todos with resolver</h4>
+
+            <div class="collection"
+                *ngIf="todos">
+                <a *ngFor="let todo of todos"
+                    [routerLink]="['/todo-detail-resolved', todo.id]"
+                    class="collection-item">
+                    <span class="badge"
+                        [ngSwitch]="todo.completed">
+                        <ng-container *ngSwitchCase="true">
+                            😁
+                        </ng-container>
+                        <ng-container *ngSwitchCase="false">
+                            😡
+                        </ng-container>
+    
+                    </span>
+                    {{todo.title}}
+                </a>
+            </div>
+        </div>
+
+</div>
