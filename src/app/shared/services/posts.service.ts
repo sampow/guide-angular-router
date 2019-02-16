@@ -9,16 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class PostService {
 
-    public apiUrl: string;
-
     constructor(
         private http: HttpClient
-    ) {
-        this.apiUrl = environment.api;
-    }
+    ) { }
 
     getPostById(id: number): Observable<Post> {
-        return this.http.get<Post>(`${this.apiUrl}/posts/${id}`);
+        return this.http.get<Post>(`${environment.api}/posts/${id}`);
     }
 }
 

@@ -20,62 +20,70 @@ export class PostDetailsComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.getRoutesParametersWithSnapshot();
+        this.getQueryParameters();
+    }
 
-        /**
-         * How to get routes parameters
-         *
-
+    /**
+     * How to get routes parameters
+     *
+    */
+    getRoutesParameters() {
         this.activatedRoute
-        .params
-        .subscribe(
-            data => {
-                console.log('pageDetailsParameters ', data);
-                this.pageDetailsParameters = data.postId;
+            .params
+            .subscribe(
+                data => {
+                    console.log('pageDetailsParameters ', data);
+                    this.pageDetailsParameters = data.postId;
 
-                // retrieve data from API
-                this.postService.getPostById(+ this.pageDetailsParameters).subscribe(
-                    apiData => {
-                        console.log('getPostById', apiData);
-                        this.post = apiData;
-                    }
-                );
-            }
-        );
-        */
-        
+                    // retrieve data from API
+                    this.postService.getPostById(+ this.pageDetailsParameters).subscribe(
+                        apiData => {
+                            console.log('getPostById', apiData);
+                            this.post = apiData;
+                        }
+                    );
+                }
+            );
+    }
 
-        // but we can write it a better way with rxjs
-/*
+    getRoutesParametersWithRxjs() {
         this.activatedRoute
-        .params
-        .pipe(
-            switchMap(params => this.postService.getPostById(+params['postId']))
-        )
-        .subscribe(
-            post => {
-                console.log('getPostById', post);
-                this.post = post;
-            }
-        );
-        */
+            .params
+            .pipe(
+                switchMap(params => this.postService.getPostById(+params['postId']))
+            )
+            .subscribe(
+                post => {
+                    console.log('getPostById', post);
+                    this.post = post;
+                }
+            );
+    }
 
+
+    // but we can write it a better way with rxjs
+
+    getRoutesParametersWithSnapshot() {
         // is the almost the same things that
         this.pageDetailsParameters = this.activatedRoute.snapshot.params['postId'];
+    }
 
-        /**
-         * How to get query parameters
-         */
+    /**
+     * How to get query parameters
+     */
+    getQueryParameters() {
         this.activatedRoute.queryParams.subscribe(
             data => {
                 console.log('pageDetailsQueryParameters ', data);
                 this.pageDetailsQueryParameters = data.display === 'true';
             }
         );
-
-
-        // if you are sure that there will be always a query params you can use snapshot
-        // this.pageDetailsQueryParameters = this.activatedRoute.snapshot.queryParams['display'] === 'true';
-
     }
+
+    // if you are sure that there will be always a query params you can use snapshot
+    // this.pageDetailsQueryParameters = this.activatedRoute.snapshot.queryParams['display'] === 'true';
+
+
 
 }
