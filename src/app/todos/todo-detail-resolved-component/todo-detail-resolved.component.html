@@ -1,0 +1,37 @@
+<div class="row"
+    *ngIf="todo">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-image">
+                <img src="https://picsum.photos/600/200?image={{todo.id}}
+                ">
+                <span class="card-title">{{todo.title}}</span>
+            </div>
+            <div class="card-content">
+                <h3>{{todo.title | titlecase}} </h3>
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+                <ng-container
+                    [ngSwitch]="todo.completed">
+                    <ng-container *ngSwitchCase="true">
+                        <a class="waves-effect light-blue darken-4 btn-large"><i
+                                class="material-icons right">check_box</i>Done 😁</a>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="false">
+                        <a class="waves-effect light-blue darken-4 btn-large"><i
+                                class="material-icons right">check_box_outline_blank
+                            </i>To do 😡</a>
+                    </ng-container>
+
+                </ng-container>
+
+                <a [routerLink]="['/todos']" class="right waves-effect  light-blue darken-2 btn-large">
+                    <i
+                    class="material-icons right">format_align_justify
+                </i>All todos</a>
+            </div>
+        </div>
+    </div>
+</div>

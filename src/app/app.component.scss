@@ -1,5 +1,5 @@
 .sidenav {
-    z-index: 2;
+    z-index: 3;
     background-color: #ededed;
     transition: 0.25s ease-out;
     &.showMenuPlease {
@@ -32,9 +32,8 @@
     }
 }
 .sidenav-bg {
-    z-index: 1;
+    z-index: 2;
     position: absolute;
-    z-index: 0;
     top: 0;
     left: 0;
     width: 100vw;
@@ -50,10 +49,13 @@
     height: 62px;
     cursor: pointer;
 }
+.site-title {
+    margin: 0;
+}
 
 main {
     position: relative;
-    z-index: -1;
+    z-index: 0;
     padding-left: 0;
     &.menuShowed {
         padding-left: 300px;
