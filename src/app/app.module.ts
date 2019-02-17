@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -26,6 +28,8 @@ import { NavigationComponent } from './shared/navigation/navigation.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule,
     HttpClientModule,
     // chargement d'un module qui n'est pas chargé de facon lazy
     PostsModule,

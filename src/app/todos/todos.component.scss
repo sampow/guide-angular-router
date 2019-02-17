@@ -1,0 +1,11 @@
+/**
+    FIX a bug with materialize css, 
+    which doesn't play well with my demo
+**/
+
+input[type="checkbox"] {
+    position: relative;
+    opacity: 1;
+    margin-right: 10px;
+    pointer-events: initial;
+}
