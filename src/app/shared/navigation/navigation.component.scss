@@ -1,0 +1,42 @@
+.sidenav {
+    z-index: 3;
+    background-color: #ededed;
+    transition: 0.25s ease-out;
+    &.showMenuPlease {
+        transform: translateX(0%);
+    }
+    li {
+        &.logo {
+            text-align: center;
+            padding-top: 32px;
+            padding-bottom: 56px;
+            background-color: #039be5;
+            i {
+                color: #fff !important;
+                float: none;
+            }
+        }
+        &.active {
+            background-color: #0372aa;
+            &>a {
+                color: #fff;
+            }
+        }
+        .collapsible-header {
+            padding: 0 32px;
+        }
+    }
+    .collapsible-body li a {
+        padding-left: 64px;
+    }
+}
+
+.sidenav-bg {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(#000000, 0.8)
+}

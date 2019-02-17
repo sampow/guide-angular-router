@@ -1,0 +1,46 @@
+<ul class="sidenav sidenav-fixed"
+    [ngClass]="{showMenuPlease: getMenuDisplay()}">
+    <li class="logo">
+        <i class=" large material-icons">device_hub</i>
+    </li>
+    <li class="bold"
+        routerLinkActive="active">
+        <a (click)="setMenuDisplay(false)" [routerLink]="['/home']"
+            routerLinkActive="active">Home</a>
+    </li>
+    <li class="bold"
+        routerLinkActive="active">
+        <a (click)="setMenuDisplay(false)" [routerLink]="['/todos']"
+            routerLinkActive="active">Todos</a>
+    </li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li class="bold"
+                routerLinkActive="active">
+                <a [routerLink]="['/posts']"
+                    routerLinkActive="active"
+                    (click)="setMenuDisplay(false)"
+                    class="collapsible-header">Posts</a>
+
+                <div class="collapsible-body"
+                    style="display: block;">
+                    <ul>
+                        <li routerLinkActive="active">
+                            <a (click)="setMenuDisplay(false)"
+                                [routerLink]="['/posts', '34']">Post details (Route parameters)</a>
+                        </li>
+                        <li 
+                            routerLinkActive="active">
+                            <a (click)="setMenuDisplay(false)" [routerLink]="['/posts' , '3']"
+                                [queryParams]="{display : true}">Post details (Query parameters) </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<div class="sidenav-bg"
+    (click)="setMenuDisplay(false)"
+    *ngIf="getMenuDisplay()"></div>

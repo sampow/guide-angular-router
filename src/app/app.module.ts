@@ -12,6 +12,7 @@ import { PostsModule } from './posts/posts.module';
 import { TodoDetailComponent } from './todos/todo-detail-component/todo-detail.component';
 import { TodoDetailResolvedComponent } from './todos/todo-detail-resolved-component/todo-detail-resolved.component';
 import { TodoDataResolver } from './shared/services/todos-resolver.service';
+import { NavigationComponent } from './shared/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TodoDataResolver } from './shared/services/todos-resolver.service';
     TodosComponent,
     TodoDetailComponent,
     TodoDetailResolvedComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
