@@ -16,28 +16,36 @@
             </div>
             <div class="card-content">
                 <h3>{{todo.title | titlecase}} </h3>
-                <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-                <ng-container
-                    [ngSwitch]="todo.completed">
+
+                <input type="text"
+                    #todoDescription
+                    [value]="description"
+                    placeholder="Something to say ?">
+
+                <ng-container [ngSwitch]="todo.completed">
                     <ng-container *ngSwitchCase="true">
-                        <a class="waves-effect light-blue darken-4 btn-large"><i
-                                class="material-icons right">check_box</i>Done 😁</a>
+                        <a (click)=" todo.completed = !todo.completed" class="waves-effect green darken-3 btn">
+                            <i
+                                class="material-icons right">check_box</i>Well Done 😁</a>
                     </ng-container>
                     <ng-container *ngSwitchCase="false">
-                        <a class="waves-effect light-blue darken-4 btn-large"><i
+                        <a (click)=" todo.completed = !todo.completed" class="waves-effect  orange darken-4 btn"><i
                                 class="material-icons right">check_box_outline_blank
-                            </i>To do 😡</a>
+                            </i>Just do it 😡</a>
                     </ng-container>
 
                 </ng-container>
 
-                <a [routerLink]="['/todos']" class="right waves-effect  light-blue darken-2 btn-large">
-                    <i
-                    class="material-icons right">format_align_justify
-                </i>All todos</a>
+
+            </div>
+            <div class="card-action">
+
+                <a class="waves-effect light-blue darken-4 btn-large" 
+                (click)="save(todoDescription.value)">Save my changes</a>
+
+                <a   (click)="getBackToAllTodos()" class="right waves-effect grey darken-4 btn-large">
+                    <i class="material-icons right">format_align_justify
+                    </i>All todos</a>
             </div>
         </div>
     </div>

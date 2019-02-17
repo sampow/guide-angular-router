@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Todo, TodosService } from '../../shared/services/todos.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -13,8 +13,10 @@ export class TodoDetailComponent implements OnInit {
 
     public todo: Todo;
     public mySpecialData: string;
+    public description: string = null;
 
-    constructor(private todoService: TodosService,
+    constructor(private router: Router,
+        private todoService: TodosService,
         private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
@@ -22,6 +24,20 @@ export class TodoDetailComponent implements OnInit {
         this.getMySpecialDataWithRouterSnapshot();
     }
 
+    /**
+     * 
+     */
+
+     getBackToAllTodos() {
+         // OPTION 1
+        // this.router.navigateByUrl('/todos');
+        // OPTION 2
+        this.router.navigate(['/todos']).then(
+            success => {
+                console.log('navigation to all todos is done');
+            }
+        );
+     }
     /**
      * Get to by id
      * version 1
@@ -70,6 +86,17 @@ export class TodoDetailComponent implements OnInit {
                 this.mySpecialData = data['mySpecialData'];
             }
         );
+    }
+
+    /**
+     * SAVE
+     * FAKE method
+     * nothing to see here
+     */
+
+    save(description) {
+        // simulate saving the detail
+        console.log('description', description);
     }
 
 }
